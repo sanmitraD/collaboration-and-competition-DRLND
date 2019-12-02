@@ -4,7 +4,7 @@
 
 <title>Report</title>
 
-<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=k3JaukZFy-WuvrF7uW5NNyWxrmkBm1MaxwkSHtpXqcAIT7t3qbHplPxwGwNwpcgWAPCN-FHmeM-YRP2RRuvlS7D2FeDfgz-5-p0IgK3Yl34ub_bCB7N0xLel2irbbDxMag9dsWn8BlfZYTVZHMOKkA" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovL2xvY2FsaG9zdDo4ODg4L25iY29udmVydC9odG1sL3AzX2NvbGxhYi1jb21wZXQvUmVwb3J0LmlweW5iP2Rvd25sb2FkPXRydWU"/><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=sSZAZwvRqyM-GXB5rh22Fogj4SIGCqLgG9AcxzYS_sftvESIPuX6K43CgzycMd3UhAIagUMw6hZqczWEGrIEztQHTsoq8z_81LxliGrLuG6fnvSQEvLBedYtUG9G5DRI_Ai2KcA8i6hS_VHz8gIHlA" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="http://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cDovL2xvY2FsaG9zdDo4ODg4L25iY29udmVydC9odG1sL3AzX2NvbGxhYi1jb21wZXQvUmVwb3J0LmlweW5iP2Rvd25sb2FkPXRydWU"/><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
@@ -13354,7 +13354,7 @@ Score (max over agents) from episode 5: 0.0
 There are two neural networks involved in it.</p>
 <h3 id="Actor">Actor<a class="anchor-link" href="#Actor">&#182;</a></h3><p>The neural network will be of follwing architecture</p>
 <ul>
-<li>layer 1: it takes an input of size equal to state size and generates output of in the size of hidden dimensions.</li>
+<li>layer 1: it takes an input of size equal to state size and generates output of in the size of hidden dimension.</li>
 <li>layer 2: it is a batch normalization layer which takes the input from layer 1 and generates normalised output to the layer 3</li>
 <li>layer 3: it is the hidden layer which generates input to final output layer.</li>
 <li>layer 4: it is the output layer and generates output of size equal to action space</li>
@@ -13366,6 +13366,7 @@ There are two neural networks involved in it.</p>
 <li>layer 3: it is the hidden layer concatenated with the action which generates input to final output layer.</li>
 <li>layer 4: it is the output layer and generates a single valued output</li>
 </ul>
+<p>We used ReLU as activation function and Adam as optimiser of both the networks. We have choosen this architecture after trying out different architectures.</p>
 
 </div>
 </div>
@@ -13478,7 +13479,7 @@ There are two neural networks involved in it.</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Hyperparameters">Hyperparameters<a class="anchor-link" href="#Hyperparameters">&#182;</a></h2><p>Below are the hyperparmeters used whiled training the agent</p>
-<p><strong>BUFFER_SIZE:</strong> it represents the size of the replay buffer.</p>
+<p><strong>BUFFER_SIZE:</strong> it represents the size of the replay buffer. This replay buffer will be shared by both Actor and Critic networks.</p>
 <p><strong>BATCH_SIZE:</strong> minibatch size during training.</p>
 <p><strong>GAMMA:</strong> It is the discount factor which defines the importance of past rewards.</p>
 <p><strong>TAU:</strong> For soft update of target parameters.</p>
@@ -13488,9 +13489,11 @@ There are two neural networks involved in it.</p>
 <p><strong>LEARN_EVERY:</strong> used as a parameter that can be used to define learning when enough experience is achieved.</p>
 <p><strong>LEARN_NUM:</strong> number of learning passes.</p>
 <p><strong>GRAD_CLIPPING:</strong> Gradient clipping used to avoid exploding gradient problem.</p>
+<p><strong>Adding Noise</strong>: We are adding noise to the agent which helps us to explore. and we are using epsilon greedy approach to control this noise.</p>
 <p><strong>OU_SIGMA &amp; OU_THETA:</strong> Ornstein-Uhlenbech noise parameters. This process generates noise that is correlated with the previous noise, as to prevent the noise from cancelling out or freeing the overall dynamics.</p>
 <p><strong>EPSILON:</strong> epsilon to define amount of noise to be added.</p>
 <p><strong>EPSILON_DECAY:</strong> decrementing factor for epsilon.</p>
+<p>the values to parameters like BATCH_SIZE, GAMMA, TAU, LR_ACTOR LR_CRITIC, BUFFER_SIZE, OU_SIGMA, OU_THETA are decided after experimenting with different values and remaining the values inspired from best practices suggested in udacity and the slack community.</p>
 
 </div>
 </div>
