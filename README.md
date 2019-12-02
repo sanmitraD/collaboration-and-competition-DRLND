@@ -25,6 +25,12 @@ The environment is considered solved, when the average (over 100 episodes) of th
 
 ### Getting Started
 
+#### Installing dependencies
+1. First setup the required enviroment by following the steps in https://github.com/udacity/deep-reinforcement-learning#dependencies link.
+2. Now install Ml-Agents by following step at https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation.md#environment-setup . 
+3. Now download the required files.
+
+#### Downloading required files
 1. Download the environment from one of the links below.  You need only select the environment that matches your operating system:
     - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis_Linux.zip)
     - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P3/Tennis/Tennis.app.zip)
